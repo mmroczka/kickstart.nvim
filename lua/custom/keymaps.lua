@@ -13,10 +13,11 @@ k.set("n", "<leader>nh", ":nohl<CR>")
 k.set("n", "x", '"_x')
 
 -- [[ Manage Splits ]]
-k.set("n", "<leader>sv", "<C-w>v", { desc = "Split window Vertically" })
-k.set("n", "<leader>sh", "<C-w>s", { desc = "Split window Horitonzally" })
-k.set("n", "<leader>se", "<C-w>=", { desc = "Split Equally" })
-k.set("n", "<leader>sx", ":close<CR>", { desc = "Split close" })
+k.set("n", "<leader>wv", "<C-w>v", { desc = "split Window Vertically" })
+k.set("n", "<leader>wh", "<C-w>s", { desc = "split Window Horitonzally" })
+k.set("n", "<leader>we", "<C-w>=", { desc = "split Windows Equally" })
+k.set("n", "<leader>wx", ":close<CR>", { desc = "Window Exit" })
+-- we have one more command <leader>wm which is the Window Maximizer
 
 -- [[ Manage Tabs ]]
 k.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })
@@ -41,17 +42,17 @@ k.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics li
 -- [[==== PLUGIN KEYMAPS ====]]
 
 -- vim-maximizer
--- keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
+k.set("n", "<leader>wm", ":MaximizerToggle<CR>")
 
 -- [[ Configure Oil ]]
 k.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- [[ Configure Telescope ]]
--- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files in current project
--- keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find text in current project
--- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find current string cursor is on in current project
--- keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- show active buffers
--- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- show help tags
+k.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files in current project
+k.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find text in current project
+k.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find current string cursor is on in current project
+k.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- show active buffers
+k.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- show help tags
 
 -- See `:help telescope.builtin`
 k.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -84,5 +85,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- [[ Configure Harpoon ]]
+k.set("n", "mc", ':lua require("harpoon.mark").add_file()<CR>', { desc = "[M]ark w/Harpoon [C]reate mark", silent = true })
+k.set("n", "mm", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', { desc = "[H]arpoon [M]enu", silent = true })
+k.set("n", "mn", ':lua require("harpoon.ui").nav_next()<CR>', { desc = "[H]arpoon [N]ext", silent = true })
+k.set("n", "mp", ':lua require("harpoon.ui").nav_prev()<CR>', { desc = "[H]arpoon [P]revious", silent = true })
+k.set("n", "ma", ':lua require("harpoon.ui").nav_file(1)<CR>', { desc = "[H]arpoon [1]", silent = true })
+k.set("n", "ms", ':lua require("harpoon.ui").nav_file(2)<CR>', { desc = "[H]arpoon [2]", silent = true })
+k.set("n", "md", ':lua require("harpoon.ui").nav_file(3)<CR>', { desc = "[H]arpoon [3]", silent = true })
+k.set("n", "mf", ':lua require("harpoon.ui").nav_file(4)<CR>', { desc = "[H]arpoon [4]", silent = true })
+k.set("n", "mg", ':lua require("harpoon.ui").nav_file(5)<CR>', { desc = "[H]arpoon [5]", silent = true })
+k.set("n", "mh", ':lua require("harpoon.ui").nav_file(6)<CR>', { desc = "[H]arpoon [6]", silent = true })
+k.set("n", "mj", ':lua require("harpoon.ui").nav_file(7)<CR>', { desc = "[H]arpoon [7]", silent = true })
+k.set("n", "mk", ':lua require("harpoon.ui").nav_file(8)<CR>', { desc = "[H]arpoon [8]", silent = true })
+k.set("n", "ml", ':lua require("harpoon.ui").nav_file(9)<CR>', { desc = "[H]arpoon [9]", silent = true })
+k.set("n", "m;", ':lua require("harpoon.ui").nav_file(10)<CR>', { desc = "[H]arpoon [10]", silent = true })
+k.set("n", "mt", ':lua require("harpoon.term").gotoTerminal(1)<CR>', { desc = "[H]arpoon [T]erminal 1", silent = true })
+k.set("n", "my", ':lua require("harpoon.term").gotoTerminal(2)<CR>', { desc = "[H]arpoon [T]erminal 2", silent = true })
+k.set("t", "<C-o>", '<C-\\><C-N><C-o><CR>', { desc = "Go back in jumplist", silent = true })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

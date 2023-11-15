@@ -32,7 +32,13 @@ require('custom.lsp-setup')
 -- (auto-completion)
 require('custom.cmp-setup')
 
+-- [[ Configure Flash ]]
+-- (Faster Vim f,t,F,T like easymotion)
+require('custom.plugins.flash-setup')
 
+-- [[ Configure Mini move ]]
+-- (move lines in normal/visual mode up/down/left/right)
+require('custom.plugins.mini-move-setup')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
